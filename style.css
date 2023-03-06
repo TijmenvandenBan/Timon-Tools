@@ -11,7 +11,7 @@ body {
     text-decoration-line: none;
     font-weight: lighter;
 }
-.navigation_bar {
+.navigation_bar_top {
     background-color: rgb(33, 97, 140);
     padding: 20px;
     margin:0;
@@ -45,4 +45,9 @@ body {
 #search_bar {
     text-align: center;
     width: 100%;
+}
+
+footer {
+    background-color: rgb(33, 97, 140);
+    color: black;
 }
