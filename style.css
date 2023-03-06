@@ -47,7 +47,22 @@ body {
     width: 100%;
 }
 
-footer {
+.main {
+    min-height: 1080px;
+}
+
+.navigation_bar_bottom {
     background-color: rgb(33, 97, 140);
-    color: black;
+    padding: 20px;
+    margin: 0;
+    box-shadow: 0 -10px 20px grey;
+    color: white;
+}
+
+.tile {
+    background-color: rgb(33, 97, 140);
+    width: 33%;
+    margin: 30px;
+    padding: 10px;
+
 }
