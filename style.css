@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Calibri, serif;
+    background-color: white;
+}
+
+#title {
+    color: white;
+    display: inline-block;
+    float: left;
+    text-decoration-line: none;
+    font-weight: lighter;
+}
+.navigation_bar {
+    background-color: rgb(33, 97, 140);
+    padding: 20px;
+    margin:0;
+    box-shadow: 0 10px 20px grey;
+}
+
+.navigation_items {
+    list-style-type: none;
+    display: inline-block;
+    color: white;
+    padding: -4px;
+    text-align: right;
+    float: right;
+
+}
+
+.navigation_items li {
+    float: left;
+    padding: 10px;
+}
+
+.navigation_items li a {
+    color: white;
+    text-decoration-line: none;
+}
+
+.navigation_items li a:hover {
+    color: white;
+}
+
+#search_bar {
+    text-align: center;
+    width: 100%;
+}
