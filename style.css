@@ -67,9 +67,21 @@ Main {
     padding: 20px;
     float: left;
     color: white;
+    border-radius: 30px;
 }
 
 #output_interest_rate {
+    height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-size: x-large;
+}
+
+#item_count {
+    font-size: x-large;
+}
+
+#item_list {
     height: 200px;
     overflow: scroll;
     overflow-x: hidden;

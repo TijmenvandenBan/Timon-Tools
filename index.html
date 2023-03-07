@@ -43,11 +43,23 @@
                 <input type="text" id="interest_rate_years" value="" placeholder="Years">
 
                 <button onclick="calculate_interest_rate()">Calculate</button>
-                <p id="output_interest_rate">0</p>
+                <p id="output_interest_rate">&euro; 0</p>
             </div>
         </div>
 
+        <div class="tile">
+            <div id="create_item">
+                <h2>Create List</h2>
 
+                <label for="item_name"></label>
+                <input type="text" id="item_name" value="" placeholder="Item">
+
+                <button onclick="add_item()">Add +</button>
+
+                <p id="item_count">0 Items</p>
+                <ul id="item_list"></ul>
+            </div>
+        </div>
     </Main>
 
     <footer class="navigation_bar_bottom">
