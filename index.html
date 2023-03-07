@@ -52,9 +52,10 @@
                 <h2>Create List</h2>
 
                 <label for="item_name"></label>
-                <input type="text" id="item_name" value="" placeholder="Item">
+                <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter()">
 
-                <button onclick="add_item()">Add +</button>
+                <button onclick="add_item()">Add</button>
+                <button onclick="reset_item_list()">Clear</button>
 
                 <p id="item_count">0 Items</p>
                 <ul id="item_list"></ul>

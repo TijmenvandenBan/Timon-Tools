@@ -22,12 +22,21 @@ function calculate_interest_rate() {
         document.getElementById("output_interest_rate").innerHTML += "<p>" + "Year " +
             Number(current_year + i) + " - " + ("&euro; " + amount.toFixed(2)) + "</p>";
     }
+    document.getElementById("amount").value = "";
+    document.getElementById("interest_rate").value = "";
+    document.getElementById("interest_rate_years").value = "";
+    document.getElementById("amount").focus();
 }
 
+// Creat List
 let all_items = [];
 function add_item() {
     let item_name = document.getElementById("item_name").value;
-    all_items.push(item_name);
+    if (item_name.trim() === "") {
+        return;
+     } else {
+        all_items.push(item_name);
+    }
 
     if (all_items.length === 1){
         document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Item" + "</p>";
@@ -39,4 +48,22 @@ function add_item() {
     item.innerHTML = item_name;
 
     document.getElementById("item_list").append(item);
+    document.getElementById("item_name").value = "";
+    document.getElementById("item_name").focus();
+}
+
+function reset_item_list () {
+    all_items = [];
+    document.getElementById("item_list").innerHTML = "";
+    reset_item_count()
+}
+
+function reset_item_count() {
+    document.getElementById("item_count").innerHTML = "<p>" + "0 Items" + "</p>";
+}
+
+function check_enter () {
+    if (event.key === "Enter") {
+        add_item()
+    }
 }
