@@ -50,6 +50,7 @@ body {
 Main {
     min-height: 1080px;
     width: 100%;
+
 }
 
 .navigation_bar_bottom {
@@ -62,12 +63,20 @@ Main {
 
 .tile {
     background-color: rgb(33, 97, 140);
-    width:29.1%;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 20px;
     padding: 20px;
     float: left;
     color: white;
-
 }
+
+#output_interest_rate {
+    height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    font-size: x-large;
+}
+
+.warning p {
+    color: red;
+}
+

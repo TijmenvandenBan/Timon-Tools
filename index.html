@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <link rel="script" href="script.js">
+    <script src="script.js"></script>
     <title>Timon Tools</title>
 </head>
 <body>
@@ -27,23 +27,27 @@
 
     <!--Main Body-->
     <Main>
+
+        <!-- Calculate Interest Rate -->
         <div class="tile">
-            <div class="tile_content">
-                <p>lorem</p>
+            <div id="calculate_interest">
+                <h2>Calculate Interest Rate</h2>
+
+                <label for="amount"></label>
+                <input type="text" id="amount" value="" placeholder="Amount">
+
+                <label for="interest_rate"></label>
+                <input type="text" id="interest_rate" value="" placeholder="Interest Rate">
+
+                <label for="interest_rate_years"></label>
+                <input type="text" id="interest_rate_years" value="" placeholder="Years">
+
+                <button onclick="calculate_interest_rate()">Calculate</button>
+                <p id="output_interest_rate">0</p>
             </div>
         </div>
 
-        <div class="tile">
-            <div class="tile_content">
-                <p>lorem</p>
-            </div>
-        </div>
 
-        <div class="tile">
-            <div class="tile_content">
-                <p>lorem</p>
-            </div>
-        </div>
     </Main>
 
     <footer class="navigation_bar_bottom">
