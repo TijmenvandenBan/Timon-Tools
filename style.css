@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Calibri, serif;
+    font-family: Calibri, sans-serif;
     background-color: white;
 }
 
@@ -47,8 +47,9 @@ body {
     width: 100%;
 }
 
-.main {
+Main {
     min-height: 1080px;
+    width: 100%;
 }
 
 .navigation_bar_bottom {
@@ -61,8 +62,12 @@ body {
 
 .tile {
     background-color: rgb(33, 97, 140);
-    width: 33%;
-    margin: 30px;
-    padding: 10px;
+    width:29.1%;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    float: left;
+    color: white;
 
 }
