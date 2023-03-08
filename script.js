@@ -34,15 +34,11 @@ function add_item() {
     let item_name = document.getElementById("item_name").value;
     if (item_name.trim() === "") {
         return;
-     } else {
+    } else {
         all_items.push(item_name);
     }
 
-    if (all_items.length === 1){
-        document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Item" + "</p>";
-    } else {
-        document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Items" + "</p>";
-    }
+    updateI
 
     let item = document.createElement("li");
     item.innerHTML = item_name;
@@ -50,6 +46,22 @@ function add_item() {
     document.getElementById("item_list").append(item);
     document.getElementById("item_name").value = "";
     document.getElementById("item_name").focus();
+
+    // JSON: Javascript Object Notation
+    localStorage.itemList = JSON.stringify(all_items);
+}
+
+function readLocalList () {
+    all_items = JSON.parse(localStorage.itemList);
+    updateItems();
+
+    document.getElementById("item_list").innerHTML = "";
+
+    for (let i = 0; i < all_items.length; i++) {
+        let item = document.createElement("li");
+        item.innerHTML = all_items[i];
+        document.getElementById("item_list").append(item);
+    }
 }
 
 function reset_item_list () {
@@ -62,8 +74,30 @@ function reset_item_count() {
     document.getElementById("item_count").innerHTML = "<p>" + "0 Items" + "</p>";
 }
 
-function check_enter () {
-    if (event.key === "Enter") {
-        add_item()
+
+function updateItems () {
+    if (all_items.length === 1){
+        document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Item" + "</p>";
+    } else {
+        document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Items" + "</p>";
     }
 }
+
+function check_enter_create_list () {
+    if (event.key === "Enter") {
+        add_item();
+    }
+
+
+}
+
+function init() {
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        readLocalList();
+    }

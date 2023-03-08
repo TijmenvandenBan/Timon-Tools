@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
     <script src="script.js"></script>
+
+<!--    Map css and js-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+
+
     <title>Timon Tools</title>
 </head>
-<body>
+<body onload="init()">
     <!--Header-->
     <header class="navigation_bar_top">
         <a href="index.html" id="title"><h1>Timon Tools</h1></a>
@@ -52,14 +60,20 @@
                 <h2>Create List</h2>
 
                 <label for="item_name"></label>
-                <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter()">
+                <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()">
 
                 <button onclick="add_item()">Add</button>
                 <button onclick="reset_item_list()">Clear</button>
+                <button onclick="readLocalList()">Read</button>
 
                 <p id="item_count">0 Items</p>
                 <ul id="item_list"></ul>
             </div>
+        </div>
+
+        <div class="tile">
+            <h2>World map</h2>
+            <div id="map"></div>
         </div>
     </Main>
 
