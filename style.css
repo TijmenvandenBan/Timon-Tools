@@ -1,22 +1,27 @@
 body {
     margin: 0;
-    font-family: Calibri, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     background-color: white;
     min-height: 100%;
     height: 100%;
 }
 
-#title {
+#title h1 {
     color: white;
-    display: inline-block;
     text-decoration-line: none;
-    font-weight: lighter;
+    font-weight: 100;
+    float: left;
 }
+
+h2 {
+    font-weight: 400;
+}
+
 .navigation_bar_top {
     background-color: rgb(33, 97, 140);
     padding: 20px;
     box-shadow: 0 10px 20px grey;
-    margin: 0 0 20px;
 }
 
 .navigation_items {
@@ -34,9 +39,19 @@ body {
     padding: 10px;
 }
 
-.navigation_items li a {
+.navigation_items li button {
     color: white;
     text-decoration-line: none;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid white;
+    padding: 1em 2em;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.navigation_items li button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5em 0.5em -0.4em white;
+    cursor: pointer;
 }
 
 .navigation_items li a:hover {
@@ -49,28 +64,30 @@ body {
 }
 
 Main {
-    height: 100%;
+    min-height: 1080px;
     width: 100%;
     padding-bottom: 100px;
 
 }
 
 .tile   {
-    width: 33.3333%;
+    width: calc(100%/3);
     margin: 0;
-    display: inline-block;
+    display: block;
     padding: 20px;
     float: left;
+    box-sizing: border-box;
 
 }
 
 .content {
-    background-color: rgb(33, 97, 140);
+    background-color: rgba(33, 97, 140, 1);
     padding: 20px;
     float: left;
     color: white;
     border-radius: 30px;
     width: 100%;
+    height: 400px;
     box-sizing: border-box;
 }
 
@@ -96,9 +113,33 @@ Main {
     color: red;
 }
 
+.navigation_bar_bottom {
+    padding: 20px;
+    background-color: rgb(33, 97, 140);
+    position: -webkit-sticky;
+    bottom: 0;
+    color: white;
+    box-shadow: 0 -10px 20px grey;
+    margin: 0;
+}
+
 #map {
-    width: 300px;
+    width: 100%;
     height: 300px;
+}
+
+#circle {
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+#circle:hover {
+    border-radius: 50%;
+    transition: 1s;
+    transform: rotate(-360deg) scale(2, 2) translate(2em, 2em);
+
 }
 
 
