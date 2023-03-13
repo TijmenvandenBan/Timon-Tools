@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 
-
-
     <title>Timon Tools</title>
 </head>
 <body onload="init()">
@@ -38,47 +36,53 @@
 
         <!-- Calculate Interest Rate -->
         <div class="tile">
-            <div id="calculate_interest">
-                <h2>Calculate Interest Rate</h2>
+            <div class="content">
+                <div id="calculate_interest">
+                    <h2>Calculate Interest Rate</h2>
 
-                <label for="amount"></label>
-                <input type="text" id="amount" value="" placeholder="Amount">
+                    <label for="amount"></label>
+                    <input type="text" id="amount" value="" placeholder="Amount">
 
-                <label for="interest_rate"></label>
-                <input type="text" id="interest_rate" value="" placeholder="Interest Rate">
+                    <label for="interest_rate"></label>
+                    <input type="text" id="interest_rate" value="" placeholder="Interest Rate">
 
-                <label for="interest_rate_years"></label>
-                <input type="text" id="interest_rate_years" value="" placeholder="Years">
+                    <label for="interest_rate_years"></label>
+                    <input type="text" id="interest_rate_years" value="" placeholder="Years">
 
-                <button onclick="calculate_interest_rate()">Calculate</button>
-                <p id="output_interest_rate">&euro; 0</p>
+                    <button onclick="calculate_interest_rate()">Calculate</button>
+                    <p id="output_interest_rate">&euro; 0</p>
+                </div>
             </div>
         </div>
 
         <div class="tile">
-            <div id="create_item">
-                <h2>Create List</h2>
+            <div class="content">
+                <div id="create_item">
+                    <h2>Create List</h2>
 
-                <label for="item_name"></label>
-                <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()">
+                    <label for="item_name"></label>
+                    <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()">
 
-                <button onclick="add_item()">Add</button>
-                <button onclick="reset_item_list()">Clear</button>
-                <button onclick="readLocalList()">Read</button>
+                    <button onclick="add_item()">Add</button>
+                    <button onclick="reset_item_list()">Clear</button>
+                    <button onclick="readLocalList()">Read</button>
 
-                <p id="item_count">0 Items</p>
-                <ul id="item_list"></ul>
+                    <p id="item_count">0 Items</p>
+                    <ul id="item_list"></ul>
+                </div>
             </div>
         </div>
 
         <div class="tile">
-            <h2>World map</h2>
-            <div id="map"></div>
-        </div>
+            <div class="content">
+                <h2>World map</h2>
+                <div id="map"></div>
+            </div>
+        </div >
     </Main>
 
-    <footer class="navigation_bar_bottom">
-        <p>&#169; Timon Tools</p>
+    <footer>
+
     </footer>
 </body>
 </html>
