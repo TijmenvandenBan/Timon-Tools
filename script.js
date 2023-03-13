@@ -20,7 +20,7 @@ function calculate_interest_rate() {
     for (let i = 0; i < years; i++) {
         amount *= interest;
         document.getElementById("output_interest_rate").innerHTML += "<p>" + "Year " +
-            Number(current_year + i) + " - " + ("&euro; " + amount.toFixed(2)) + "</p>";
+            Number(current_year + i + 1) + ": " + ("&euro; " + amount.toFixed(2)) + "</p>";
     }
     document.getElementById("amount").value = "";
     document.getElementById("interest_rate").value = "";
@@ -91,13 +91,43 @@ function check_enter_create_list () {
 
 }
 
+var map;
 function init() {
-    var map = L.map('map').setView([51.505, -0.09], 13);
-
+    map = L.map('map').setView([52.370216, 4.895168], 11);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    L.marker([52.370216, 4.895168]).addTo(map).bindPopup("Amsterdam: Capital city of the Netherlands.").openPopup();
+
     readLocalList();
+}
+
+function flyToAmsterdam() {
+    map.flyTo([52.370216, 4.895168],11);
+}
+
+function flyHome () {
+    navigator.geolocation.getCurrentPosition(showHome);
+}
+
+function showHome (position) {
+    console.log(position)
+    map.flyTo([position.coords.latitude, position.coords.longitude], 17);
+    L.marker([position.coords.latitude, position.coords.longitude]).addTo(map).bindPopup("Home").openPopup();
+}
+
+function getCountries () {
+    $.getJSON("https://restcountries.com/v3.1/all", showCapitals);
+}
+
+function showCapitals (data) {
+    console.log(data[0]);
+
+    for(let country of data){
+        if (country.capitalInfo.latlng) {
+            L.marker(country.capitalInfo.latlng).addTo(map).bindPopup(country.capital[0] + "<br/>" + country.name.common);
+        }
+    }
 }

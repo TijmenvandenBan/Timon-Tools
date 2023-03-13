@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="">
     <script src="script.js"></script>
 
+
 <!--    Map css and js-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<!--    jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
     <title>Timon Tools</title>
 </head>
@@ -44,13 +47,13 @@
                     <h2>Calculate Interest Rate</h2>
 
                     <label for="amount"></label>
-                    <input type="text" id="amount" value="" placeholder="Amount">
+                    <input type="text" id="amount" value="" placeholder="Amount" class="text_bar">
 
                     <label for="interest_rate"></label>
-                    <input type="text" id="interest_rate" value="" placeholder="Interest Rate">
+                    <input type="text" id="interest_rate" value="" placeholder="Interest Rate" class="text_bar">
 
                     <label for="interest_rate_years"></label>
-                    <input type="text" id="interest_rate_years" value="" placeholder="Years">
+                    <input type="text" id="interest_rate_years" value="" placeholder="Years" class="text_bar">
 
                     <button onclick="calculate_interest_rate()">Calculate</button>
                     <p id="output_interest_rate">&euro; 0</p>
@@ -64,7 +67,7 @@
                     <h2>Create List</h2>
 
                     <label for="item_name"></label>
-                    <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()">
+                    <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()" class="text_bar">
 
                     <button onclick="add_item()">Add</button>
                     <button onclick="reset_item_list()">Clear</button>
@@ -79,6 +82,9 @@
         <div class="tile">
             <div class="content">
                 <h2>World map</h2>
+                <button onclick="flyToAmsterdam()">To Amsterdam</button>
+                <button onclick="flyHome()">Home</button>
+                <button onclick="getCountries()">All countries</button>
                 <div id="map"></div>
             </div>
         </div >
