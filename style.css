@@ -21,7 +21,8 @@ h2 {
 .navigation_bar_top {
     background-color: rgb(33, 97, 140);
     padding: 20px;
-    box-shadow: 0 10px 20px grey;
+    box-shadow: 0 10px 20px rgb(33, 97, 140);;
+    top: 0;
 }
 
 .navigation_items {
@@ -76,10 +77,27 @@ h2 {
     display: inline-block;
 }
 
+.hero {
+    text-align: center;
+    padding: 0 20px;
+    margin: 10px;
+    float: left;
+    background-color: midnightblue;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.hero img {
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
 Main {
-    min-height: 1080px;
     width: 100%;
     padding-bottom: 100px;
+    overflow: scroll;
+    overflow: hidden;
 
 }
 
@@ -100,26 +118,41 @@ Main {
     color: white;
     border-radius: 30px;
     width: 100%;
-    height: 400px;
+    height: 600px;
     box-sizing: border-box;
 }
 
 #output_interest_rate {
-    height: 200px;
+    height: 400px;
     overflow: scroll;
     overflow-x: hidden;
-    font-size: x-large;
 }
 
-#item_count {
-    font-size: x-large;
-}
 
 #item_list {
-    height: 200px;
+    height: 400px;
     overflow: scroll;
     overflow-x: hidden;
-    font-size: x-large;
+}
+
+#superhero-output {
+    height: 450px;
+    overflow: scroll;
+    overflow-x: hidden;
+
+
+}
+
+#superheroAmount {
+    width: auto;
+    margin: 0 10px 0 0;
+    padding: 0;
+    float: left;
+}
+
+#superhero-output ul {
+    list-style: none;
+    padding-left: 0;
 }
 
 .warning p {
@@ -132,7 +165,7 @@ Main {
     position: -webkit-sticky;
     bottom: 0;
     color: white;
-    box-shadow: 0 -10px 20px grey;
+    box-shadow: 0 -10px 20px rgb(33, 97, 140);;
     margin: 0;
 }
 

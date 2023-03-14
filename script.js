@@ -92,14 +92,14 @@ function check_enter_create_list () {
 }
 
 var map;
-function init() {
+function mapInit() {
     map = L.map('map').setView([52.370216, 4.895168], 11);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    L.marker([52.370216, 4.895168]).addTo(map).bindPopup("Amsterdam: Capital city of the Netherlands.").openPopup();
+    L.marker([52.370216, 4.895168]).addTo(map).bindPopup("Amsterdam: Capital city of the Netherlands.");
 
     readLocalList();
 }
@@ -120,8 +120,8 @@ function showHome (position) {
 
 function getCountries () {
     $.getJSON("https://restcountries.com/v3.1/all", showCapitals);
+    $.getJSON("https://restcountries.com/v3.1/all", searchHeroes);
 }
-
 function showCapitals (data) {
     console.log(data[0]);
 
@@ -130,4 +130,51 @@ function showCapitals (data) {
             L.marker(country.capitalInfo.latlng).addTo(map).bindPopup(country.capital[0] + "<br/>" + country.name.common);
         }
     }
+}
+
+let allHeroes = null;
+function superheroInit () {
+    $.getJSON("https://akabab.github.io/superhero-api/api/all.json", showSuperheroes);
+}
+
+function showSuperheroes (data) {
+    document.getElementById("superheroAmount").innerHTML = data.length + " superheroes.";
+
+    document.getElementById("superhero-output").innerHTML = "";
+
+    if (allHeroes === null) {
+        allHeroes = data;
+    }
+
+
+    for (let hero of data) {
+        let div = document.createElement("div");
+        div.className = "hero";
+
+        let p = document.createElement("p");
+        p.innerHTML = hero.name;
+        div.append(p);
+
+        let img = document.createElement("img");
+        img.src = hero.images.sm;
+        div.append(img);
+
+        p = document.createElement("p");
+        p.innerHTML = hero.appearance.gender;
+        div.append(p);
+
+        document.getElementById("superhero-output").append(div);
+    }
+}
+
+function searchHeroes() {
+    let search = document.getElementById("search").value.toUpperCase();
+    let result = allHeroes.filter(h => h.name.toUpperCase().includes(search));
+
+    showSuperheroes(result);
+}
+
+function init () {
+    superheroInit()
+    mapInit()
 }
