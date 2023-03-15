@@ -1,4 +1,3 @@
-
 // Calculate interest rate for a certain amount of years
 function calculate_interest_rate() {
     document.getElementById("output_interest_rate").innerHTML = "";
@@ -30,6 +29,7 @@ function calculate_interest_rate() {
 
 // Creat List
 let all_items = [];
+
 function add_item() {
     let item_name = document.getElementById("item_name").value;
     if (item_name.trim() === "") {
@@ -51,7 +51,7 @@ function add_item() {
     localStorage.itemList = JSON.stringify(all_items);
 }
 
-function readLocalList () {
+function readLocalList() {
     all_items = JSON.parse(localStorage.itemList);
     updateItems();
 
@@ -64,7 +64,7 @@ function readLocalList () {
     }
 }
 
-function reset_item_list () {
+function reset_item_list() {
     all_items = [];
     document.getElementById("item_list").innerHTML = "";
     reset_item_count()
@@ -75,15 +75,15 @@ function reset_item_count() {
 }
 
 
-function updateItems () {
-    if (all_items.length === 1){
+function updateItems() {
+    if (all_items.length === 1) {
         document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Item" + "</p>";
     } else {
         document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Items" + "</p>";
     }
 }
 
-function check_enter_create_list () {
+function check_enter_create_list() {
     if (event.key === "Enter") {
         add_item();
     }
@@ -92,6 +92,7 @@ function check_enter_create_list () {
 }
 
 var map;
+
 function mapInit() {
     map = L.map('map').setView([52.370216, 4.895168], 11);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -105,27 +106,28 @@ function mapInit() {
 }
 
 function flyToAmsterdam() {
-    map.flyTo([52.370216, 4.895168],11);
+    map.flyTo([52.370216, 4.895168], 11);
 }
 
-function flyHome () {
+function flyHome() {
     navigator.geolocation.getCurrentPosition(showHome);
 }
 
-function showHome (position) {
+function showHome(position) {
     console.log(position)
     map.flyTo([position.coords.latitude, position.coords.longitude], 17);
     L.marker([position.coords.latitude, position.coords.longitude]).addTo(map).bindPopup("Home").openPopup();
 }
 
-function getCountries () {
+function getCountries() {
     $.getJSON("https://restcountries.com/v3.1/all", showCapitals);
     $.getJSON("https://restcountries.com/v3.1/all", searchHeroes);
 }
-function showCapitals (data) {
+
+function showCapitals(data) {
     console.log(data[0]);
 
-    for(let country of data){
+    for (let country of data) {
         if (country.capitalInfo.latlng) {
             L.marker(country.capitalInfo.latlng).addTo(map).bindPopup(country.capital[0] + "<br/>" + country.name.common);
         }
@@ -133,11 +135,12 @@ function showCapitals (data) {
 }
 
 let allHeroes = null;
-function superheroInit () {
+
+function superheroInit() {
     $.getJSON("https://akabab.github.io/superhero-api/api/all.json", showSuperheroes);
 }
 
-function showSuperheroes (data) {
+function showSuperheroes(data) {
     document.getElementById("superheroAmount").innerHTML = data.length + " superheroes.";
 
     document.getElementById("superhero-output").innerHTML = "";
@@ -174,7 +177,7 @@ function searchHeroes() {
     showSuperheroes(result);
 }
 
-function init () {
+function init() {
     superheroInit()
     mapInit()
 }

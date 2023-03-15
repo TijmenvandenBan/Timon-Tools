@@ -3,130 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="">
     <script src="script.js"></script>
 
 
-<!--    Map css and js-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <!--    Map css and js-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-<!--    jQuery link -->
+    <!--    jQuery link -->
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <!--    Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--    Personal Stylesheet-->
+    <link rel="stylesheet" href="style.css">
 
     <title>Timon Tools</title>
 </head>
 <body onload="init()">
-    <!--Header-->
-    <header class="navigation_bar_top">
-        <a href="index.html" id="title"><h1>Timon Tools</h1></a>
 
-        <!--Navigation bar-->
-        <nav>
-            <ul class="navigation_items">
-                <li><a href="index.html"><button>Home</button></a></li>
-                <li><a href="about.html"><button>About</button></a></li>
-            </ul>
-        </nav>
+<!--Main Body-->
+<div class="container">
+    <div class="row">
 
-        <form action="">
-            <input type="search" name="search_bar" id="search_bar" placeholder="search">
-            <label for="search_bar"></label>
-        </form>
-    </header>
+        <!--Calculate Interest Rate-->
+        <div class="col-lg-6 col-xxl-4 bg-primary">
+            <div id="calculate_interest">
+                <h2>Calculate Interest Rate</h2>
 
-    <!--Main Body-->
-    <Main>
+                <label for="amount"></label>
+                <input type="text" id="amount" value="" placeholder="Amount" class="text_bar">
 
-        <!-- Calculate Interest Rate -->
-        <div class="tile">
-            <div class="content">
-                <div id="calculate_interest">
-                    <h2>Calculate Interest Rate</h2>
+                <label for="interest_rate"></label>
+                <input type="text" id="interest_rate" value="" placeholder="Interest Rate" class="text_bar">
 
-                    <label for="amount"></label>
-                    <input type="text" id="amount" value="" placeholder="Amount" class="text_bar">
+                <label for="interest_rate_years"></label>
+                <input type="text" id="interest_rate_years" value="" placeholder="Years" class="text_bar">
 
-                    <label for="interest_rate"></label>
-                    <input type="text" id="interest_rate" value="" placeholder="Interest Rate" class="text_bar">
-
-                    <label for="interest_rate_years"></label>
-                    <input type="text" id="interest_rate_years" value="" placeholder="Years" class="text_bar">
-
-                    <button onclick="calculate_interest_rate()">Calculate</button>
-                    <p id="output_interest_rate">&euro; 0</p>
-                </div>
+                <button onclick="calculate_interest_rate()">Calculate</button>
+                <p id="output_interest_rate">&euro; 0</p>
             </div>
         </div>
 
-        <div class="tile">
-            <div class="content">
-                <div id="create_item">
-                    <h2>Create List</h2>
+        <!--Create List-->
+        <div class="col-lg-6 col-xxl-4 bg-secondary bg-secondary">
+            <div id="create_item">
+                <h2>Create List</h2>
 
-                    <label for="item_name"></label>
-                    <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()" class="text_bar">
+                <label for="item_name"></label>
+                <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()"
+                       class="text_bar">
 
-                    <button onclick="add_item()">Add</button>
-                    <button onclick="reset_item_list()">Clear</button>
-                    <button onclick="readLocalList()">Read</button>
+                <button onclick="add_item()">Add</button>
+                <button onclick="reset_item_list()">Clear</button>
+                <button onclick="readLocalList()">Read</button>
 
-                    <p id="item_count">0 Items</p>
-                    <ul id="item_list"></ul>
-                </div>
+                <p id="item_count">0 Items</p>
+                <ul id="item_list"></ul>
             </div>
         </div>
 
-        <div class="tile">
-            <div class="content">
-                <h2>World map</h2>
-                <button onclick="flyToAmsterdam()">To Amsterdam</button>
-                <button onclick="flyHome()">Home</button>
-                <button onclick="getCountries()">All countries</button>
-                <div id="map"></div>
+        <div class="col-lg-6 col-xxl-4 bg-success">
+            <h2>World map</h2>
+            <button onclick="flyToAmsterdam()">To Amsterdam</button>
+            <button onclick="flyHome()">Home</button>
+            <button onclick="getCountries()">All countries</button>
+            <div id="map"></div>
+        </div>
+
+        <div class="col-lg-6 col-xxl-4 bg-danger">
+            <div id="superheroes">
+                <h2>Superheroes</h2>
+
+                <p id="superheroAmount">0 superheroes</p>
+                <input type="text" value="" id="search" placeholder="search" onkeyup="searchHeroes()">
+                <div id="superhero-output"></div>
             </div>
         </div>
 
-        <div class="tile">
-            <div class="content">
-                <h2>Transitions</h2>
-                <div id="circle">
+    </div>
+</div>
 
-                </div>
-            </div>
-        </div>
+<!-- Bootstrap Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 
-        <div class="tile">
-            <div class="content">
-                <div id="superheroes">
-                    <h2>Superheroes</h2>
-
-                    <p id="superheroAmount">0 superheroes</p>
-                    <input type="text" value="" id="search" placeholder="search" onkeyup="searchHeroes()">
-                    <div id="superhero-output"></div>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tile">
-            <div class="content">
-
-            </div>
-        </div>
-
-        <div class="tile">
-            <div class="content">
-
-            </div>
-        </div>
-    </Main>
-
-    <footer class="navigation_bar_bottom">
-        <p>&#169; Tijmen van den Ban</p>
-
-    </footer>
 </body>
 </html>
