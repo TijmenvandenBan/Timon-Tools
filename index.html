@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="">
     <script src="script.js"></script>
 
-
-    <!--    Map css and js-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-    <!--    jQuery link -->
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-
-    <!--    Bootstrap -->
+    <!--    Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!--    jQuery link -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
     <!--    Personal Stylesheet-->
     <link rel="stylesheet" href="style.css">
@@ -25,66 +20,79 @@
 <body onload="init()">
 
 <!--Main Body-->
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 
-        <!--Calculate Interest Rate-->
-        <div class="col-lg-6 col-xxl-4 bg-primary">
-            <div id="calculate_interest">
-                <h2>Calculate Interest Rate</h2>
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile" id="calculate_interest">
+                <div class="tile-header">
+                    <h2>Interest</h2>
+                    <div class="d-flex justify-content-between interest-rate-input-bar">
+                        <label for="interest-rate-current-amount"></label>
+                        <input type="text" class="tile-input" id="interest-rate-current-amount" value="">
 
-                <label for="amount"></label>
-                <input type="text" id="amount" value="" placeholder="Amount" class="text_bar">
+                        <label for="interest-rate-percentage"></label>
+                        <input type="text" class="tile-input" id="interest-rate-percentage" value="">
 
-                <label for="interest_rate"></label>
-                <input type="text" id="interest_rate" value="" placeholder="Interest Rate" class="text_bar">
+                        <label for="interest-rate-years"></label>
+                        <input type="text" class="tile-input" id="interest-rate-years" value="">
 
-                <label for="interest_rate_years"></label>
-                <input type="text" id="interest_rate_years" value="" placeholder="Years" class="text_bar">
+                        <button class="btn" onclick="calculate_interest_rate()" id="interest-rate-button">GO!</button>
+                    </div>
+                </div>
 
-                <button onclick="calculate_interest_rate()">Calculate</button>
-                <p id="output_interest_rate">&euro; 0</p>
+                <div id="interest-rate-output"></div>
+
             </div>
         </div>
 
-        <!--Create List-->
-        <div class="col-lg-6 col-xxl-4 bg-secondary bg-secondary">
-            <div id="create_item">
-                <h2>Create List</h2>
-
-                <label for="item_name"></label>
-                <input type="text" id="item_name" value="" placeholder="Item" onkeydown="check_enter_create_list()"
-                       class="text_bar">
-
-                <button onclick="add_item()">Add</button>
-                <button onclick="reset_item_list()">Clear</button>
-                <button onclick="readLocalList()">Read</button>
-
-                <p id="item_count">0 Items</p>
-                <ul id="item_list"></ul>
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <div class="tile-header">
+                    <h2>Map</h2>
+                </div>
             </div>
         </div>
 
-        <div class="col-lg-6 col-xxl-4 bg-success">
-            <h2>World map</h2>
-            <button onclick="flyToAmsterdam()">To Amsterdam</button>
-            <button onclick="flyHome()">Home</button>
-            <button onclick="getCountries()">All countries</button>
-            <div id="map"></div>
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <h2>Header</h2>
+            </div>
         </div>
 
-        <div class="col-lg-6 col-xxl-4 bg-danger">
-            <div id="superheroes">
-                <h2>Superheroes</h2>
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <h2>Header</h2>
+            </div>
+        </div>
 
-                <p id="superheroAmount">0 superheroes</p>
-                <input type="text" value="" id="search" placeholder="search" onkeyup="searchHeroes()">
-                <div id="superhero-output"></div>
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <h2>Header</h2>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <h2>Header</h2>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <h2>Header</h2>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <h2>Header</h2>
             </div>
         </div>
 
     </div>
 </div>
+
 
 <!-- Bootstrap Javascript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

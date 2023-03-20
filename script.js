@@ -1,30 +1,26 @@
 // Calculate interest rate for a certain amount of years
 function calculate_interest_rate() {
-    document.getElementById("output_interest_rate").innerHTML = "";
+    document.getElementById("interest-rate-output").innerHTML = "";
 
-    let amount = document.getElementById("amount").value;
-    let interest = document.getElementById("interest_rate").value;
-    let years = document.getElementById("interest_rate_years").value;
+    let amount = document.getElementById("interest-rate-current-amount").value;
+    let interest = document.getElementById("interest-rate-percentage").value;
+    let years = document.getElementById("interest-rate-years").value;
     let current_year = new Date().getFullYear();
     interest = 1 + (interest / 100);
 
     if (isNaN(amount) || isNaN(interest) || isNaN(years)) {
-        document.getElementById("output_interest_rate").innerHTML = "<p>Use numbers only!</p>";
-        document.getElementById("calculate_interest").className = "warning";
+        document.getElementById("interest-rate-output").innerHTML = "<p>Use numbers only!</p>";
         return
     }
 
-    document.getElementById("calculate_interest").className = "";
-
     for (let i = 0; i < years; i++) {
         amount *= interest;
-        document.getElementById("output_interest_rate").innerHTML += "<p>" + "Year " +
-            Number(current_year + i + 1) + ": " + ("&euro; " + amount.toFixed(2)) + "</p>";
+        document.getElementById("interest-rate-output").innerHTML += "<p>" + "Year " +
+            Number(current_year + i + 1) + ": " + ("&euro;" + amount.toFixed(2)) + "</p>";
     }
-    document.getElementById("amount").value = "";
-    document.getElementById("interest_rate").value = "";
+    document.getElementById("interest-rate-current-amount").value = "";
+    document.getElementById("interest-rate-percentage").value = "";
     document.getElementById("interest_rate_years").value = "";
-    document.getElementById("amount").focus();
 }
 
 // Creat List
@@ -152,7 +148,7 @@ function showSuperheroes(data) {
 
     for (let hero of data) {
         let div = document.createElement("div");
-        div.className = "hero";
+        div.className = "col-lg-4 col-xxl-4 hero";
 
         let p = document.createElement("p");
         p.innerHTML = hero.name;
@@ -177,7 +173,75 @@ function searchHeroes() {
     showSuperheroes(result);
 }
 
+let ball1 = {
+    color: "white",
+    x: 50,
+    y: 50,
+    speedX: 1,
+    speedY: 1
+};
+
+let ball2 = {
+    color: "red",
+    x: 40,
+    y: 50,
+    speedX: 1,
+    speedY: 1
+};
+
+let ball3 = {
+    color: "yellow",
+    x: 40,
+    y: 50,
+    speedX: 1,
+    speedY: 1
+};
+
+let allBalls = [ball1, ball2, ball3];
+
+function poolInit() {
+    let canvas = document.getElementById("my-canvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, 300, 150);
+
+    for (let b of allBalls) {
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 10, 0, 2 * Math.PI);
+
+        ctx.fillStyle = b.color;
+        ctx.fill();
+
+        b.x += b.speedX;
+        b.y += b.speedY;
+
+        if (b.y >= canvas.height - 10) {
+            b.speedY *= -1;
+        }
+        if (b.y < 10) {
+            b.speedY *= -1;
+        }
+        if (b.x >= canvas.width - 10) {
+            b.speedX *= -1;
+        }
+        if (b.x < 10) {
+            b.speedX *= -1;
+        }
+
+        b.speedX *= 0.999;
+        b.speedY *= 0.999;
+    }
+}
+
+function kickIt() {
+    for (let b of allBalls) {
+        b.speedX = Math.random() * 4 - 2;
+        b.speedY = Math.random() * 4 - 2;
+    }
+}
+
 function init() {
     superheroInit()
     mapInit()
+    setInterval(poolInit, 5);
 }
