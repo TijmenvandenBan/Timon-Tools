@@ -36,7 +36,7 @@ function add_item() {
 
     updateItems();
 
-    let item = document.createElement("li");
+    let item = document.createElement("p");
     item.innerHTML = item_name;
 
     document.getElementById("item-list").append(item);
@@ -83,8 +83,6 @@ function check_enter_create_list() {
     if (event.key === "Enter") {
         add_item();
     }
-
-
 }
 
 var map;
@@ -180,7 +178,7 @@ let ball1 = {
 
 let ball2 = {
     color: "red",
-    x: 40,
+    x: 100,
     y: 50,
     speedX: 1,
     speedY: 1
@@ -188,19 +186,21 @@ let ball2 = {
 
 let ball3 = {
     color: "yellow",
-    x: 40,
+    x: 150,
     y: 50,
     speedX: 1,
     speedY: 1
 };
 
+
+// Pool
 let allBalls = [ball1, ball2, ball3];
 
 function poolInit() {
     let canvas = document.getElementById("my-canvas");
     let ctx = canvas.getContext("2d");
 
-    ctx.clearRect(0, 0, 300, 150);
+    ctx.clearRect(0, 0, 400, 200);
 
     for (let b of allBalls) {
         ctx.beginPath();
@@ -242,3 +242,19 @@ function init() {
     mapInit()
     setInterval(poolInit, 5);
 }
+
+// Prime Number
+function calculatePrimeNumber() {
+    document.getElementById("prime-number-output").innerHTML = "&infin;";
+    let number = document.getElementById("prime-number").value;
+    // let answer = nextPrime(number);
+
+    let w = new Worker("Math/primeNumber.js")
+    w.postMessage({number})
+
+    w.onmessage = function (msg) {
+       document.getElementById("prime-number-output").innerHTML = `${msg.data.asw}`; // backticks
+    }
+}
+
+

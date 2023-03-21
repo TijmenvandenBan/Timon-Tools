@@ -26,7 +26,7 @@
 <body onload="init()">
 
 <!--Main Body-->
-<div class="container-fluid">
+<div class="container-fluid tile-container">
     <div class="row">
 
         <!--Interest Rate-->
@@ -76,11 +76,11 @@
                 </div>
                 <div class="tile-output">
                     <div class="row-fluid d-flex justify-content-between">
-                        <div class="col-1">
+                        <div class="col-3">
                             <p id="item-count">0 Items</p>
                         </div>
-                        <div class="col-11">
-                            <ul id="item-list"></ul>
+                        <div class="col-9">
+                            <div id="item-list"></div>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 
                     <div class="d-flex justify-content-around interest-rate-input-bar">
                         <label for="search-hero"></label>
-                        <input type="text" value="" class="tile-input" id="search-hero" placeholder="Hero Name"
+                        <input type="text" value="" class="tile-input" id="search-hero" placeholder="Hero name"
                                onkeyup="searchHeroes()">
                     </div>
                 </div>
@@ -123,6 +123,42 @@
                 </div>
             </div>
         </div>
+
+        <!--Pool-->
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <div class="tile-header">
+                    <h2>Pool</h2>
+
+                    <div class="d-flex justify-content-around interest-rate-input-bar">
+                        <button class="btn" id="pool-btn" onclick="kickIt()">Hit</button>
+                    </div>
+                </div>
+                <div class="tile-output row d-flex justify-content-center">
+                    <canvas id="my-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!--Prime number-->
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <div class="tile-header">
+                    <h2>Next Primenumber</h2>
+
+                    <div class="d-flex justify-content-around interest-rate-input-bar">
+                        <label for="prime-number"></label>
+                        <input class="tile-input" type="text" id="prime-number" placeholder="Number" value=""
+                               onkeyup="calculatePrimeNumber()">
+                    </div>
+                </div>
+                <div class="tile-output row d-flex justify-content-center" id="prime-number-output">
+
+                </div>
+            </div>
+        </div>
+
+        <!---->
 
     </div>
 </div>

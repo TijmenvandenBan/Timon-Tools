@@ -1,3 +1,7 @@
+.tile-container {
+    padding: 0 30px 0;
+}
+
 .tile {
     /* Generic styling for all tiles */
     color: white;
@@ -6,22 +10,23 @@
     max-height: 500px;
     box-shadow: 0 0 10px 5px lightgrey;
     background-color: #3a64e2;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
+    padding-left: 18px;
 }
 
 .tile-header {
     background-color: #3a64e2;
     padding: 10px 10px 5px;
-    border-bottom: solid 2px rgba(0,0,0,5%);
-    position:-webkit-sticky;
-    position:sticky;
-    top:0;
+    border-bottom: solid 2px rgba(0, 0, 0, 5%);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     width: 100%;
 }
 
 .tile button {
-    background-color: rgba(0,0,0,20%);
+    background-color: rgba(0, 0, 0, 20%);
     color: white;
     border-radius: 40px;
     border: solid 2px white;
@@ -29,11 +34,8 @@
 }
 
 .tile button:hover {
-    background-color: rgba(0,0,0,40%);
-    color: white;
-    border-radius: 40px;
+    background-color: rgba(0, 0, 0, 40%);
     border: solid 2px white;
-    margin: 0 5px 5px;
 }
 
 .tile-output {
@@ -45,11 +47,13 @@
     box-sizing: border-box;
     text-align: center;
     color: white;
-    background-color: rgba(0,0,0,20%);
+    background-color: rgba(0, 0, 0, 20%);
     border: none;
     border-radius: 20px;
     width: 100%;
     margin: 0 5px 5px;
+    height: 40px;
+    vertical-align: middle;
 }
 
 .tile-input::placeholder {
@@ -67,7 +71,7 @@
 }
 
 .tile::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,20%); /* color of the scroll thumb */
+    background-color: rgba(0, 0, 0, 20%); /* color of the scroll thumb */
     border-radius: 20px; /* roundness of the scroll thumb */
     border: 5px solid #3a64e2; /* creates padding around scroll thumb */
 }
@@ -77,7 +81,7 @@
 }
 
 #map {
-    height: 19.2em;
+    height: 18.4em;
     border-radius: 5px;
     margin: 10px 10px;
 
@@ -92,7 +96,7 @@
     padding: 5px;
     text-align: center;
     margin: 5px;
-    background-color: rgba(0,0,0,60%);
+    background-color: rgba(0, 0, 0, 60%);
     border-radius: 20px;
     width: 200px;
     max-width: 200px;
@@ -102,4 +106,20 @@
 .hero img {
     border: 2px solid black;
     border-radius: 20px;
+}
+
+#my-canvas {
+    width: 400px;
+    background-color: rgba(0, 0, 0, 20%);
+    border-radius: 5px;
+}
+
+#pool-btn {
+    width: 100%;
+}
+
+#prime-number-output {
+    text-align: center;
+    font-size: xxx-large;
+    padding-top: 2.7em;
 }
