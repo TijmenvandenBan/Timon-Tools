@@ -12,6 +12,12 @@
     <!--    jQuery link -->
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
+    <!--    Map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
     <!--    Personal Stylesheet-->
     <link rel="stylesheet" href="style.css">
 
@@ -23,70 +29,98 @@
 <div class="container-fluid">
     <div class="row">
 
+        <!--Interest Rate-->
         <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
             <div class="tile" id="calculate_interest">
                 <div class="tile-header">
                     <h2>Interest</h2>
                     <div class="d-flex justify-content-between interest-rate-input-bar">
+
                         <label for="interest-rate-current-amount"></label>
-                        <input type="text" class="tile-input" id="interest-rate-current-amount" value="">
+                        <input type="text" class="tile-input" id="interest-rate-current-amount" value=""
+                               placeholder="Amount">
 
                         <label for="interest-rate-percentage"></label>
-                        <input type="text" class="tile-input" id="interest-rate-percentage" value="">
+                        <input type="text" class="tile-input" id="interest-rate-percentage" value=""
+                               placeholder="Percentage">
 
                         <label for="interest-rate-years"></label>
-                        <input type="text" class="tile-input" id="interest-rate-years" value="">
+                        <input type="text" class="tile-input" id="interest-rate-years" value=""
+                               placeholder="Years">
 
-                        <button class="btn" onclick="calculate_interest_rate()" id="interest-rate-button">GO!</button>
+                        <button class="btn" onclick="calculate_interest_rate()" id="interest-rate-button">Calculate
+                        </button>
                     </div>
                 </div>
 
-                <div id="interest-rate-output"></div>
+                <div class="t" id="interest-rate-output"></div>
 
             </div>
         </div>
 
+        <!--Item List-->
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <div class="tile-header">
+                    <h2>List</h2>
+
+                    <div class="d-flex justify-content-between interest-rate-input-bar">
+                        <label for="item-name"></label>
+                        <input type="text" class="tile-input" id="item-name" value="" placeholder="Item"
+                               onkeypress="check_enter_create_list()">
+
+                        <button class="btn" onclick="add_item()">Add</button>
+
+                        <button class="btn" onclick="reset_item_list()">Reset</button>
+                    </div>
+                </div>
+                <div class="tile-output">
+                    <div class="row-fluid d-flex justify-content-between">
+                        <div class="col-1">
+                            <p id="item-count">0 Items</p>
+                        </div>
+                        <div class="col-11">
+                            <ul id="item-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Map-->
         <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
             <div class="tile">
                 <div class="tile-header">
                     <h2>Map</h2>
+
+                    <div class="d-flex justify-content-around interest-rate-input-bar">
+                        <button class="btn map-btn" onclick="flyToAmsterdam()">Amsterdam</button>
+
+                        <button class="btn map-btn" onclick="flyHome()">Home</button>
+
+                        <button class="btn map-btn" onclick="getCountries()">Capitals</button>
+                    </div>
+                </div>
+                <div class="tile-output" id="map">
+
                 </div>
             </div>
         </div>
 
+        <!-- Superheroes-->
         <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
             <div class="tile">
-                <h2>Header</h2>
-            </div>
-        </div>
+                <div class="tile-header">
+                    <h2>Heroes</h2>
 
-        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
-            <div class="tile">
-                <h2>Header</h2>
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
-            <div class="tile">
-                <h2>Header</h2>
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
-            <div class="tile">
-                <h2>Header</h2>
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
-            <div class="tile">
-                <h2>Header</h2>
-            </div>
-        </div>
-
-        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
-            <div class="tile">
-                <h2>Header</h2>
+                    <div class="d-flex justify-content-around interest-rate-input-bar">
+                        <label for="search-hero"></label>
+                        <input type="text" value="" class="tile-input" id="search-hero" placeholder="Hero Name"
+                               onkeyup="searchHeroes()">
+                    </div>
+                </div>
+                <div class="tile-output row d-flex justify-content-center" id="superhero-output">
+                </div>
             </div>
         </div>
 

@@ -20,14 +20,14 @@ function calculate_interest_rate() {
     }
     document.getElementById("interest-rate-current-amount").value = "";
     document.getElementById("interest-rate-percentage").value = "";
-    document.getElementById("interest_rate_years").value = "";
+    document.getElementById("interest-rate-years").value = "";
 }
 
 // Creat List
 let all_items = [];
 
 function add_item() {
-    let item_name = document.getElementById("item_name").value;
+    let item_name = document.getElementById("item-name").value;
     if (item_name.trim() === "") {
         return;
     } else {
@@ -39,9 +39,9 @@ function add_item() {
     let item = document.createElement("li");
     item.innerHTML = item_name;
 
-    document.getElementById("item_list").append(item);
-    document.getElementById("item_name").value = "";
-    document.getElementById("item_name").focus();
+    document.getElementById("item-list").append(item);
+    document.getElementById("item-name").value = "";
+    document.getElementById("item-name").focus();
 
     // JSON: Javascript Object Notation
     localStorage.itemList = JSON.stringify(all_items);
@@ -51,31 +51,31 @@ function readLocalList() {
     all_items = JSON.parse(localStorage.itemList);
     updateItems();
 
-    document.getElementById("item_list").innerHTML = "";
+    document.getElementById("item-list").innerHTML = "";
 
     for (let i = 0; i < all_items.length; i++) {
-        let item = document.createElement("li");
+        let item = document.createElement("p");
         item.innerHTML = all_items[i];
-        document.getElementById("item_list").append(item);
+        document.getElementById("item-list").append(item);
     }
 }
 
 function reset_item_list() {
     all_items = [];
-    document.getElementById("item_list").innerHTML = "";
+    document.getElementById("item-list").innerHTML = "";
     reset_item_count()
 }
 
 function reset_item_count() {
-    document.getElementById("item_count").innerHTML = "<p>" + "0 Items" + "</p>";
+    document.getElementById("item-count").innerHTML = "<p>" + "0 Items" + "</p>";
 }
 
 
 function updateItems() {
     if (all_items.length === 1) {
-        document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Item" + "</p>";
+        document.getElementById("item-count").innerHTML = "<p>" + all_items.length + " Item" + "</p>";
     } else {
-        document.getElementById("item_count").innerHTML = "<p>" + all_items.length + " Items" + "</p>";
+        document.getElementById("item-count").innerHTML = "<p>" + all_items.length + " Items" + "</p>";
     }
 }
 
@@ -117,7 +117,6 @@ function showHome(position) {
 
 function getCountries() {
     $.getJSON("https://restcountries.com/v3.1/all", showCapitals);
-    $.getJSON("https://restcountries.com/v3.1/all", searchHeroes);
 }
 
 function showCapitals(data) {
@@ -137,8 +136,6 @@ function superheroInit() {
 }
 
 function showSuperheroes(data) {
-    document.getElementById("superheroAmount").innerHTML = data.length + " superheroes.";
-
     document.getElementById("superhero-output").innerHTML = "";
 
     if (allHeroes === null) {
@@ -148,7 +145,7 @@ function showSuperheroes(data) {
 
     for (let hero of data) {
         let div = document.createElement("div");
-        div.className = "col-lg-4 col-xxl-4 hero";
+        div.className = "col hero";
 
         let p = document.createElement("p");
         p.innerHTML = hero.name;
@@ -167,7 +164,7 @@ function showSuperheroes(data) {
 }
 
 function searchHeroes() {
-    let search = document.getElementById("search").value.toUpperCase();
+    let search = document.getElementById("search-hero").value.toUpperCase();
     let result = allHeroes.filter(h => h.name.toUpperCase().includes(search));
 
     showSuperheroes(result);

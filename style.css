@@ -4,20 +4,41 @@
     border-radius: 5px;
     height: 500px;
     max-height: 500px;
-    padding: 0 10px 10px 10px;
     box-shadow: 0 0 10px 5px lightgrey;
     background-color: #3a64e2;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tile-header {
-    padding-top: 10px;
     background-color: #3a64e2;
-    padding-bottom: 5px;
+    padding: 10px 10px 5px;
     border-bottom: solid 2px rgba(0,0,0,5%);
     position:-webkit-sticky;
     position:sticky;
     top:0;
+    width: 100%;
+}
+
+.tile button {
+    background-color: rgba(0,0,0,20%);
+    color: white;
+    border-radius: 40px;
+    border: solid 2px white;
+    margin: 0 5px 5px;
+}
+
+.tile button:hover {
+    background-color: rgba(0,0,0,40%);
+    color: white;
+    border-radius: 40px;
+    border: solid 2px white;
+    margin: 0 5px 5px;
+}
+
+.tile-output {
+    font-size: larger;
+    padding: 10px 10px 5px;
 }
 
 .tile-input {
@@ -27,8 +48,12 @@
     background-color: rgba(0,0,0,20%);
     border: none;
     border-radius: 20px;
-    width: 50%;
-    margin: 5px;
+    width: 100%;
+    margin: 0 5px 5px;
+}
+
+.tile-input::placeholder {
+    color: lightgrey;
 }
 
 .tile::-webkit-scrollbar {
@@ -47,15 +72,34 @@
     border: 5px solid #3a64e2; /* creates padding around scroll thumb */
 }
 
-#interest-rate-button {
-    background-color: rgba(0,0,0,20%);
-    color: white;
-    border-radius: 40px;
-    border: solid 2px white;
-}
-
 #interest-rate-output {
     text-align: center;
-    font-size: larger;
 }
 
+#map {
+    height: 19.2em;
+    border-radius: 5px;
+    margin: 10px 10px;
+
+}
+
+.map-btn {
+    width: 100%;
+}
+
+.hero {
+    border: 2px solid black;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+    background-color: rgba(0,0,0,60%);
+    border-radius: 20px;
+    width: 200px;
+    max-width: 200px;
+
+}
+
+.hero img {
+    border: 2px solid black;
+    border-radius: 20px;
+}
