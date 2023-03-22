@@ -257,4 +257,30 @@ function calculatePrimeNumber() {
     }
 }
 
+//  Chatroom
+let socket = new WebSocket("ws://www.xanderwemmers.nl/ws/chat");
+
+socket.onopen = function () {
+    document.getElementById("chatroom-output").innerHTML += "<p><i><b>Connected</b></i></p>";
+    socket.send(JSON.stringify({ cmd: "login", name: "Tijmen" }));
+}
+
+socket.onclose = function () {
+    document.getElementById("chatroom-output").innerHTML += "<p><i>Disconnected</i></p>";
+}
+
+socket.onmessage = function (msg) {
+    let message = JSON.parse(msg.data);
+
+    if (message.cmd === "shout") {
+        document.getElementById("chatroom-output").innerHTML += "<p><b>" + message.from + "</b>: "+ message.message + "</p>";
+    } else {
+        console.log(message);
+    }
+}
+function sendMessage () {
+
+    let message = document.getElementById("chat-message").value;
+    socket.send(JSON.stringify({ cmd: "shout", message }));
+}
 

@@ -29,6 +29,24 @@
 <div class="container-fluid tile-container">
     <div class="row">
 
+        <!-- Chat Room-->
+        <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
+            <div class="tile">
+                <div class="tile-header">
+                    <h2>Chatroom</h2>
+
+                    <div class="d-flex justify-content-around interest-rate-input-bar">
+                        <label for="chat-message"></label>
+                        <input class="tile-input" type="text" id="chat-message" placeholder="Message" value="">
+                        <button class="btn" onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+                <div class="tile-output row d-flex justify-content-center" id="chatroom-output">
+
+                </div>
+            </div>
+        </div>
+
         <!--Interest Rate-->
         <div class="col-sm-12 col-lg-6 col-xxl-4 p-3">
             <div class="tile" id="calculate_interest">
@@ -158,7 +176,6 @@
             </div>
         </div>
 
-        <!---->
 
     </div>
 </div>
